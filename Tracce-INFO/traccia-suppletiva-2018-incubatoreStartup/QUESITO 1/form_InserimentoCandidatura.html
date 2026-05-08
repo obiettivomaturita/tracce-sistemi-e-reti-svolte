@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Inserimento Candidatura</title>
+</head>
+<body>
+  <h1>Modulo candidatura start-up</h1>
+
+  <form action="insert.php" method="POST">
+    <h3>Dati start-up</h3>
+    <label for="CodS">Codice Start-up (CodS):</label>
+    <input type="number" id="CodS" name="CodS" required><br><br>
+
+    <label for="Nome">Nome:</label>
+    <input type="text" id="Nome" name="Nome" required><br><br>
+
+    <label for="Settore">Settore:</label>
+    <input type="text" id="Settore" name="Settore" required><br><br>
+
+    <label for="Indirizzo">Indirizzo:</label>
+    <input type="text" id="Indirizzo" name="Indirizzo" required><br><br>
+
+    <label for="RagioneSociale">Ragione Sociale:</label>
+    <input type="text" id="RagioneSociale" name="RagioneSociale" required><br><br>
+
+    <h3>Dati candidatura</h3>
+    <label for="DataC">Data candidatura (YYYY-MM-DD):</label>
+    <input type="text" id="DataC" name="DataC" required><br><br>
+
+    <label for="OraC">Ora candidatura (HH:MM:SS):</label>
+    <input type="text" id="OraC" name="OraC" required><br><br>
+
+    <label for="Descrizione">Descrizione:</label><br>
+    <textarea id="Descrizione" name="Descrizione" rows="6" cols="60" required></textarea><br><br>
+
+    <label for="Allegato">Allegato (es. URL o nome file):</label>
+    <input type="text" id="Allegato" name="Allegato"><br><br>
+
+    <label for="Stato">Stato:</label>
+    <select id="Stato" name="Stato" required>
+      <option value="Inviata">Inviata</option>
+      <option value="InValutazione">InValutazione</option>
+      <option value="Accettata">Accettata</option>
+      <option value="Rifiutata">Rifiutata</option>
+    </select><br><br>
+
+    <label for="Matricola">Matricola esperto (se assegnata):</label>
+    <input type="number" id="Matricola" name="Matricola"><br><br>
+
+    <button type="submit">Invia candidatura</button>
+  </form>
+</body>
+</html>
+
+
+
