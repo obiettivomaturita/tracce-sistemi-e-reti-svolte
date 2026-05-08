@@ -1,0 +1,33 @@
+<?php
+require "db_connection.php";
+
+$idAcc = isset($_GET["idAcc"]) ? intval($_GET["idAcc"]) : 0;
+if ($idAcc <= 0) die("IdAcc mancante.");
+
+echo "<!DOCTYPE html>";
+echo "<html lang='it'>";
+echo "<head><meta charset='UTF-8'><title>Inserisci valutazione</title></head>";
+echo "<body>";
+
+echo "<h2>Inserimento valutazione</h2>";
+
+echo "<form action='insert_valutazione.php' method='POST'>";
+echo "<input type='hidden' name='idAcc' value='".$idAcc."'>";
+
+echo "<label>Voto (1-10):</label><br>";
+echo "<input type='number' name='voto' min='1' max='10' required><br><br>";
+
+echo "<label>Commento:</label><br>";
+echo "<textarea name='commento' rows='5' cols='40'></textarea><br><br>";
+
+echo "<input type='submit' value='Invia valutazione'>";
+echo "</form>";
+
+echo "</body></html>";
+
+$connection->close();
+?>
+
+
+
+
