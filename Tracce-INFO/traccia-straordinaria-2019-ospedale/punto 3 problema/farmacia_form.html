@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Ricerca farmaci giornalieri</title>
+</head>
+<body>
+
+    <h2>Elenco giornaliero dei farmaci per reparto</h2>
+
+    <form action="farmacia.php" method="post">
+        <label>Data:</label>
+        <input type="date" name="data" required>
+        <br><br>
+
+        <label>Codice reparto:</label>
+        <input type="number" name="idReparto" required>
+        <br><br>
+
+        <input type="submit" value="Cerca">
+    </form>
+
+    <br>
+
+    <a href="logout.php">Logout</a>
+
+</body>
+</html>
