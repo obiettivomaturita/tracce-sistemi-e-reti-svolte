@@ -9,15 +9,19 @@ if (!isset($_SESSION["Ruolo"]) || $_SESSION["Ruolo"] != "MEDICO") {
 $idP = $_POST["idP"];
 
 $query = "SELECT 
-            DataV,
-            OraV,
-            PressioneMin,
-            PressioneMax,
-            Temperatura,
-            FrequenzaCardiaca
-          FROM VISITA
-          WHERE IdP = ?
-          ORDER BY DataV, OraV";
+            V.Data AS DataVisita,
+            V.Ora AS OraVisita,
+            V.PressioneMinima,
+            V.PressioneMassima,
+            V.Temperatura,
+            V.FrequenzaCardiaca,
+            V.Motivazione,
+            V.Annotazioni,
+            R.Nome AS Reparto
+          FROM VISITA V
+          INNER JOIN REPARTO R ON V.IdR = R.IdR
+          WHERE V.IdP = ?
+          ORDER BY V.Data, V.Ora";
 
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $idP);
@@ -33,23 +37,29 @@ echo "<h2>Storico dati biometrici - Paziente ".$idP."</h2>";
 
 if ($result->num_rows > 0) {
     echo "<table border='1'>";
-    echo "<tr>
-            <th>Data</th>
-            <th>Ora</th>
-            <th>Pressione Min</th>
-            <th>Pressione Max</th>
-            <th>Temperatura</th>
-            <th>Frequenza cardiaca</th>
-          </tr>";
+    echo "<tr>";
+    echo "<th>Data</th>";
+    echo "<th>Ora</th>";
+    echo "<th>Pressione minima</th>";
+    echo "<th>Pressione massima</th>";
+    echo "<th>Temperatura</th>";
+    echo "<th>Frequenza cardiaca</th>";
+    echo "<th>Motivazione</th>";
+    echo "<th>Annotazioni</th>";
+    echo "<th>Reparto</th>";
+    echo "</tr>";
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>".$row["DataV"]."</td>";
-        echo "<td>".$row["OraV"]."</td>";
-        echo "<td>".$row["PressioneMin"]."</td>";
-        echo "<td>".$row["PressioneMax"]."</td>";
+        echo "<td>".$row["DataVisita"]."</td>";
+        echo "<td>".$row["OraVisita"]."</td>";
+        echo "<td>".$row["PressioneMinima"]."</td>";
+        echo "<td>".$row["PressioneMassima"]."</td>";
         echo "<td>".$row["Temperatura"]."</td>";
         echo "<td>".$row["FrequenzaCardiaca"]."</td>";
+        echo "<td>".$row["Motivazione"]."</td>";
+        echo "<td>".$row["Annotazioni"]."</td>";
+        echo "<td>".$row["Reparto"]."</td>";
         echo "</tr>";
     }
 
